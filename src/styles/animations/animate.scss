@@ -1,0 +1,110 @@
+// Main view
+$animations: 'fade', 'slide-top', 'slide-bottom', 'slide-left', 'slide-right', 'slide-z';
+@each $animation in $animations {
+	.#{$animation}-enter,
+	.#{$animation}-appear {
+	    animation: #{$animation}-in 250ms;
+		position: absolute;
+
+		&.#{$animation}-enter-active,
+		&.#{$animation}-appear-active {
+			position: relative;
+			opacity: 1;
+		}
+	}
+
+	.#{$animation}-leave {
+	    animation: #{$animation}-out 250ms;
+		position: absolute;
+
+		&.#{$animation}-leave-active {
+			z-index: -1;
+			opacity: 0;
+		}
+	}
+}
+
+.content-container {
+	position: relative;
+
+	.view-enter,
+	.view-appear {
+		position: absolute;
+		left: 0;
+		right: 0;
+		animation: fade-in 250ms;
+
+		&.view-enter-active,
+		&.view-appear-active {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+
+	.view-leave {
+		position: absolute;
+		left: 0;
+		right: 0;
+		animation: fade-out 250ms;
+
+		&.view-leave-active {
+			visibility: hidden;
+			opacity: 0;
+		}
+	}
+}
+
+// Animation
+@keyframes fade-in {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}
+@keyframes fade-out {
+	from { opacity: 1; }
+	to   { opacity: 0; }
+}
+
+@keyframes slide-top-in {
+	from { transform: translate3d(0, -100%, 0); }
+	to   { transform: translate3d(0, 0, 0); }
+}
+@keyframes slide-top-out {
+	from { transform: translate3d(0, 0, 0); z-index: 100; opacity: 1; }
+	to   { transform: translate3d(0, -100%, 0); z-index: 0; }
+}
+
+@keyframes slide-bottom-in {
+	from { transform: translate3d(0, 100%, 0); }
+	to   { transform: translate3d(0, 0, 0); }
+}
+@keyframes slide-bottom-out {
+	from { transform: translate3d(0, 0, 0); z-index: 100; opacity: 1; }
+	to   { transform: translate3d(0, 100%, 0); z-index: 0; }
+}
+
+@keyframes slide-left-in {
+	from { transform: translate3d(-100%, 0, 0); }
+	to   { transform: translate3d(0, 0, 0); }
+}
+@keyframes slide-left-out {
+	from { transform: translate3d(0, 0, 0); z-index: 100; opacity: 1; }
+	to   { transform: translate3d(-100%, 0, 0); z-index: 0; }
+}
+
+@keyframes slide-right-in {
+	from { transform: translate3d(100%, 0, 0); }
+	to   { transform: translate3d(0, 0, 0); }
+}
+@keyframes slide-right-out {
+	from { transform: translate3d(0, 0, 0); z-index: 100; opacity: 1; }
+	to   { transform: translate3d(100%, 0, 0); z-index: 0; }
+}
+
+@keyframes slide-z-in {
+	from { transform: perspective(500px) translateZ(-100px); }
+	to   { transform: perspective(0) translateZ(0); }
+}
+@keyframes slide-z-out {
+	from { transform: perspective(0) translateZ(0); z-index: 100; opacity: 1; }
+	to   { transform: perspective(500px) translateZ(-100px); z-index: 0; }
+}

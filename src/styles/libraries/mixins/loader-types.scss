@@ -1,0 +1,41 @@
+@mixin loader-bars {
+	.loader {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-left: -22px;
+		margin-top: -18px;
+		width: 45px;
+		height: 40px;
+
+		& > div {
+			background-color: $primary-500;
+			width: 5px;
+			height: 100%;
+			margin-right: 3px;
+			display: inline-block;
+			animation-fill-mode: both;
+			animation: loader-bars 1.2s infinite ease-in-out;
+		}
+
+		& > div:nth-child(1) {
+			animation-delay: -1s;
+		}
+
+		& > div:nth-child(2) {
+			animation-delay: -0.8s;
+		}
+
+		& > div:nth-child(3) {
+			animation-delay: -0.6s;
+		}
+
+		& > div:nth-child(4) {
+			animation-delay: -0.4s;
+		}
+
+		& > div:nth-child(5) {
+			animation-delay: -0.2s;
+		}
+	}
+}

@@ -1,0 +1,20 @@
+@import 'mixins/loader-types';
+
+@import 'loaders/bars';
+// @import 'loaders/blip';
+// @import 'loaders/tiles';
+
+.loader-container {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(255, 255, 255, 0.6);
+	z-index: 100;
+
+	&.show {
+		display: block;
+	}
+}

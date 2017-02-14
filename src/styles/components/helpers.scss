@@ -1,0 +1,66 @@
+// Text
+.text-small {
+	font-size: 80%;
+}
+
+.text-upper {
+	text-transform: uppercase !important;
+}
+
+.text-bold {
+	font-weight: 700 !important;
+}
+
+// Collapse
+.collapse {
+	padding: 0 !important;
+}
+
+.collapse-margin {
+	margin: 0 !important;
+}
+
+// Foundation overrides
+.column:last-child:not(:first-child),
+.columns:last-child:not(:first-child) {
+    float: left;
+}
+
+@media screen and (min-width: 481px) {
+	.collapse-large {
+		padding: 0 !important;
+	}
+}
+
+@media screen and (max-width: 640px) {
+	.collapse-small {
+		padding: 0;
+	}
+}
+
+// Margins
+// push-top, push-right, push-bottom, push-left
+$sides: 'top', 'right', 'bottom', 'left';
+@each $side in $sides {
+	.push-#{$side} {
+		margin-#{$side}: 10px !important;
+		@for $i from 2 through 10 {
+			&-#{$i}x {
+				margin-#{$side}: #{$i}0px !important;
+			}
+		}
+	}
+}
+
+// Margins
+// drag-top, drag-bottom, drag-left, drag-right
+@each $side in $sides {
+	.drag-#{$side} {
+		margin-#{$side}: -5px !important;
+		@for $i from 2 through 10 {
+			&-#{$i}x {
+				margin-#{$side}: -#{$i}0px !important;
+			}
+		}
+	}
+}

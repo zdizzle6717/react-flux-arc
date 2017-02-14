@@ -1,0 +1,15 @@
+.loader-container {
+	@include loader-bars;
+}
+
+@keyframes loader-bars {
+	0%,
+	100%,
+	40% {
+		transform: scaley(0.5);
+	}
+
+	20% {
+		transform: scaley(1);
+	}
+}

@@ -1,0 +1,130 @@
+.required {
+    &::before {
+        content: '*';
+        color: $alert-100;
+        padding-right: 3px;
+    }
+}
+
+.validate-error-element {
+	position: relative;
+
+	&.check-box,
+	&.radio-group {
+		&.touched.invalid:not(.focused),
+		&.blurred.invalid,
+		&.dirty.invalid {
+			border: 1px solid $alert-500;
+			margin: 0 0 1rem;
+			padding: 4px;
+			box-sizing: border-box;
+
+			input {
+				margin: 0;
+			}
+		}
+	}
+}
+
+.validate-errors {
+	position: absolute;
+	height: 100%;
+	max-width: 100%;
+	top: 39px;
+	right: 0;
+	display: none;
+	color: $white;
+	background: $alert-700;
+	border-top: none;
+	padding: 8px 12px;
+	z-index: 2;
+	pointer-events: none;
+	transition: all 0.5s;
+	transform: translate3d(0, -100%, 0);
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	.validate-error {
+		font-size: 12px;
+		font-style: italic;
+
+		&:first-child {
+			margin: 0;
+		}
+	}
+}
+
+input.touched.invalid:not(.focused),
+input.blurred.invalid,
+input.dirty.invalid,
+textarea.touched.invalid:not(.focused),
+textarea.blurred.invalid,
+textarea.dirty.invalid {
+	border: 1px solid $alert-500;
+
+	& ~ .validate-errors {
+		display: flex;
+		animation: fadeIn 0.25s;
+
+		&:before {
+			font-family: 'FontAwesome';
+			line-height: 22px;
+			content: '\f071';
+			color: $white;
+		}
+
+		.validate-error {
+			display: none;
+		}
+	}
+
+	&:focus {
+		border-bottom: 2px solid $alert-700;
+	}
+
+	&:focus,
+	&:hover {
+		& ~ .validate-errors {
+			transform: translate3d(0, -0, 0);
+			line-height: 1;
+			border-radius: 0 0 5px 5px;
+			height: auto;
+			z-index: 91;
+
+			&:before {
+				content: '';
+				color: $white;
+			}
+
+			.validate-error {
+				display: block;
+				margin-bottom: 5px;
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+}
+
+select.touched.invalid:not(.focused),
+select.blurred.invalid,
+select.dirty.invalid {
+	border: 1px solid $alert-500;
+}
+
+.date-picker {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+
+	select {
+		margin-right: 10px;
+
+		&:nth-child(3) {
+			margin-right: 0;
+		}
+	}
+}

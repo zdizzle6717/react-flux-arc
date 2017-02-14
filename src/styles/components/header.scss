@@ -1,0 +1,181 @@
+// Top
+
+header {
+	height: 52px;
+	top: 0;
+	margin: 0;
+	padding: 0;
+	background: $primary-500;
+	font-size: 1.2rem;
+	line-height: 16rem;
+	box-shadow: $shadow-3;
+	position: fixed;
+	width: 100%;
+	z-index: 100;
+
+	.nav {
+		display: flex;
+
+		.home-link,
+		.menu-toggle {
+			color: $white;
+			text-transform: uppercase;
+			display: flex;
+			padding: 0;
+			margin: 0;
+			flex-direction: row;
+			align-items: center;
+
+			a,
+			i {
+				color: $white;
+				padding: 1rem;
+				height: 100%;
+				line-height: 1;
+				display: flex;
+				align-items: center;
+				transition: background 300ms;
+				z-index: 100;
+
+				&:hover{
+					background: $primary-700;
+				}
+			}
+		}
+
+		.menu-toggle {
+		    display: none;
+			line-height: 1rem;
+			justify-content: center;
+			z-index: 100;
+
+		    &:hover {
+		        cursor: pointer;
+		        opacity: .9;
+		    }
+		}
+
+		.animation-wrapper {
+			display: flex;
+			flex-grow: 1;
+			z-index: 90;
+
+			.mobile-menu-group {
+				display: none;
+			}
+
+			.menu-group,
+			.mobile-menu-group {
+				display: flex;
+				flex-grow: 1;
+				z-index: 90;
+
+				.main-menu {
+					flex-grow: 1;
+				}
+
+				.login-menu {
+					justify-content: flex-end;
+				}
+
+				.main-menu,
+				.login-menu {
+					display: flex;
+					padding: 0;
+					margin: 0;
+					flex-direction: row;
+					align-items: center;
+
+					li {
+						padding: 0;
+						list-style-type: none;
+						height: 100%;
+
+						a {
+							color: $white;
+							padding: 1rem;
+							height: 100%;
+							line-height: 1;
+							display: flex;
+							align-items: center;
+							transition: background 300ms;
+
+							&:hover,
+							&.active {
+								background: $primary-700;
+							}
+						}
+					}
+
+				    .active {
+				        a {
+				            transition: all 500ms;
+				            color: #2199e8;
+				            background: transparent;
+				            text-decoration: underline;
+				        }
+				    }
+				}
+			}
+		}
+
+		.menu-backdrop {
+			display: none;
+			position: fixed;
+			background: transparent;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 20;
+
+			&.show {
+				display: block;
+			}
+		}
+	}
+}
+
+// Media Query
+@media screen and (max-width: 800px) {
+	header {
+		.nav {
+			.home-link {
+				flex-grow: 1;
+			}
+
+		    .menu-toggle {
+		        display: inline;
+		    }
+
+			.animation-wrapper {
+				position: absolute;
+
+				.menu-group {
+					display: none;
+				}
+
+				.mobile-menu-group {
+					display: block;
+					width: 100%;
+					position: fixed;
+					top: 52px;
+					background: $primary-500;
+					box-shadow: $shadow-3;
+
+					.main-menu,
+					.login-menu {
+						display: flex;
+						flex-direction: column;
+						justify-content: center;
+
+						li,
+						a {
+							width: 100%;
+						}
+				    }
+				}
+			}
+		}
+	}
+}

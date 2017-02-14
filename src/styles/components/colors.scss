@@ -1,0 +1,7 @@
+// Background Colors
+@each $name, $color in $foundation-palette {
+	.#{$name} {
+		background-color: $color !important;
+		color: $white;
+	}
+}

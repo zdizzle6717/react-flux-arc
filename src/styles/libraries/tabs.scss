@@ -1,0 +1,117 @@
+.tab-group {
+
+	.tabs-menu {
+		border-bottom: 4px solid $black-500;
+		overflow: hidden;
+		transition: border 250ms ease;
+	}
+
+	.tabs-menu ul {
+		display: flex;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+		float: left;
+		padding-left: 48px;
+		list-style-type: none;
+
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		li {
+			flex: 1;
+			height: 36px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			float: right;
+			padding: 0 24px;
+			background-color: $white-900;
+			margin-right: 46px;
+			z-index: 20;
+			position: relative;
+			cursor: pointer;
+			color: $black-200;
+			text-transform: uppercase;
+			transition: all 250ms ease;
+
+			&:after,
+			&:before {
+				z-index: -1;
+				display: block;
+				content: " ";
+				position: absolute;
+				top: 0;
+				height: 100%;
+				width: 44px;
+				background-color: $white-900;
+				transition: all 250ms ease;
+			}
+
+			&:before {
+				right: -24px;
+				transform: skew(30deg, 0deg);
+				box-shadow: rgba(0,0,0,.1) 3px 2px 5px, inset rgba(255,255,255,.09) -1px 0;
+			}
+
+			&:after {
+				left: -24px;
+				transform: skew(-30deg, 0deg);
+				box-shadow: rgba(0,0,0,.1) -3px 2px 5px, inset rgba(255,255,255,.09) 1px 0;
+			}
+
+			&:hover {
+				color: #444;
+
+				&:after,
+				&:before {
+					color: #444;
+				}
+			}
+
+			&.active {
+				z-index: 30;
+				background-color: $black-500;
+				color: $white-500;
+
+				&:after,
+				&:before {
+					background-color: $black-500;
+					color: $white-500;
+				}
+			}
+
+			.error-count {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				position: absolute;
+				top: 6px;
+				right: 0;
+				color: $black-500;
+				background: $white-500;
+				border: 1px solid $white-500;
+				border-radius: 50%;
+				width: 27px;
+				height: 27px;
+			}
+		}
+	}
+
+	.tabs-container {
+		display: block;
+		position: relative;
+
+		.tab-content {
+			width: 100%;
+			display: block;
+			padding: 20px;
+			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+			background: $white-600;
+			min-height: 100px;
+		}
+	}
+}

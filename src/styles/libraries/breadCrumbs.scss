@@ -1,0 +1,35 @@
+.breadCrumbs {
+	z-index: 40;
+	top: 60px;
+	position: relative;
+	list-style-type: none;
+	margin: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	li {
+		color: $black-500;
+		padding: 0 10px 5px;
+
+		a {
+			color: $primary-500;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+
+		&::after {
+			content: '>';
+			position: absolute;
+			margin-left: 5px;
+		}
+
+		&:last-child {
+			&::after {
+				display: none;
+			}
+		}
+	}
+}

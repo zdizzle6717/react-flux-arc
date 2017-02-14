@@ -1,0 +1,94 @@
+@mixin panel($base-color, $index: 0) {
+	@if ($index < 5) {
+		.panel {
+			@include box-shadow($index + 1);
+			border: none;
+			background: $base-color;
+			padding: 0;
+			margin: 0;
+
+			.panel-title,
+			.panel-footer {
+				background: darken($base-color, 6%);
+				color: $gray-100;
+				text-transform: uppercase;
+				font-weight: 700;
+				padding: 12px 20px;
+
+				h1,
+				h2,
+				h3,
+				h4,
+				h5,
+				h6,
+				p {
+					margin: 0;
+				}
+
+				@each $name, $color in $foundation-palette {
+					&.#{$name} {
+						$next: if($index % 2 == 0, $color, darken($color, 5%));
+						background: $next;
+						color: $white;
+					}
+				}
+
+				&.collapse {
+					padding: 0;
+				}
+
+			}
+
+			.panel-title {
+				&.flex-title {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+				}
+				.fa {
+					float: right;
+					font-size: 1.4rem;
+				}
+			}
+
+			.panel-content {
+				border-top: 1px solid darken($base-color, 4%);
+				padding: 20px;
+
+				&.shrink {
+					padding: 15px;
+				}
+
+				&.shrink-mobile {
+					@include breakpoint (small only) {
+						padding: 10px;
+					}
+				}
+
+				&.collapse {
+					padding: 0;
+				}
+
+				&.collapse-mobile {
+					@include breakpoint (small only) {
+						padding: 0;
+					}
+				}
+
+				table {
+					border: none;
+				}
+
+				$next: if($index % 2 == 0, darken($base-color, 2.5%), lighten($base-color, 2.5%));
+				// $next: adjust-hue($base-color, 180deg);
+				@include panel($next, $index + 1);
+			}
+
+			.panel-actions {
+				padding: 20px 0;
+			}
+		}
+	}
+}
+
+@include panel($white-600);

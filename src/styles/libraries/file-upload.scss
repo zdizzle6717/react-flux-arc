@@ -1,0 +1,136 @@
+.upload-container {
+	margin: 0 0 1rem;
+
+	.file-upload {
+		position: relative;
+		margin: 0 0 .5rem;
+		padding: .5rem;
+		height: 2.4375rem;
+		border: 2px dotted $black-500;
+
+		&.touched.invalid:not(.focused),
+		&.blurred.invalid,
+		&.dirty.invalid {
+			border: 2px solid $alert-600;
+		}
+
+		.file-count {
+			position: absolute;
+		    right: 5px;
+		    font-size: .8rem;
+		    font-weight: bold;
+			letter-spacing: 1px;
+		}
+
+		label {
+			position: absolute;
+			top: 0;
+			left: 0;
+			padding: .5rem;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+
+			&:hover {
+				cursor: pointer;
+			}
+		}
+
+		input {
+			position: absolute;
+			height: 0;
+			width: 0;
+			visibility: hidden;
+			margin: 0;
+		}
+	}
+
+	.file-info {
+		position: relative;
+
+		.file-container {
+
+			.help-text {
+				font-size: 1rem;
+			}
+
+			.toggle-list {
+				position: fixed;
+			    bottom: 10px;
+			    left: 20px;
+				z-index: 90;
+			}
+
+			.file-list {
+				@include box-shadow(2);
+				display: none;
+				background: $white;
+				border: 1px solid rgba(0, 0, 0, 0.2);
+				width: auto;
+			    max-width: 400px;
+			    position: fixed;
+			    font-size: 1rem;
+			    left: 20px;
+			    bottom: 80px;
+			    z-index: 100;
+
+				@media screen and (max-width: 480px) {
+					width: 100%;
+					max-width: none;
+					left: 0;
+				}
+
+				&.show {
+					display: table;
+				}
+
+				.remove-file-header {
+					text-align: right;
+				}
+
+				.remove-file {
+					float: right;
+					padding-right: 25px;
+
+					.fa {
+						color: $alert-500;
+						width: 24px;
+						height: 24px;
+						border-radius: 20px;
+						border: 1px solid $alert-500;
+						align-items: center;
+						padding: 0;
+						flex-direction: column;
+						justify-content: center;
+						text-align: center;
+						display: flex;
+						transition: background 0.5s, color 0.5s;
+						left: 50%;
+
+						&:hover {
+							cursor: pointer;
+							color: $white;
+							background: $alert-500;
+						}
+					}
+				}
+
+				table {
+					margin: 0;
+				}
+			}
+		}
+	}
+
+	.file-upload-errors {
+		display: none;
+		color: $alert-500;
+		text-align: center;
+		margin: 3px;
+
+		&.dirty {
+			display: block;
+		}
+	}
+}

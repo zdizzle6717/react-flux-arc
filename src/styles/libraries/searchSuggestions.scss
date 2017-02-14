@@ -1,0 +1,57 @@
+$rowHeight: 27px;
+$rowCount: 4;
+$containerPadding: 3px;
+
+.search-suggestions {
+	&.active {
+		input {
+			z-index: 102;
+		}
+	}
+
+	input {
+		position: relative;
+		margin-bottom: 0;
+	}
+
+	.suggestions {
+		position: relative;
+		z-index: 102;
+
+		ul {
+			@include box-shadow(1);
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			background: $white-500;
+			border: 1px solid #cacaca;
+			list-style-type: none;
+	    	margin-left: 0;
+			padding: $containerPadding 0 0 0;
+			max-height: $rowHeight * $rowCount + $containerPadding;
+			overflow-y: scroll;
+
+			li {
+				background: $white-500;
+				padding: 1px 5px;
+
+				&.selected,
+				&:hover {
+					cursor: pointer;
+					background: darken($white-500, 5%);
+				}
+			}
+		}
+	}
+
+	.clickaway-backdrop {
+		position: fixed;
+		background: transparent;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 101;
+	}
+}

@@ -1,0 +1,136 @@
+$loader-size: 80px;
+$loader-border: 4px;
+$loader-comp: 2px;
+$loader-duration: 2s;
+
+.card {
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+	position: relative;
+	min-height: 250px;
+	border: none;
+	background: #f5f5f5;
+	padding: 0;
+	margin: 0;
+
+	.card-content {
+		border-top: 1px solid darken(#f5f5f5, 7%);
+		padding: 20px;
+
+		.card-field {
+			min-height: 60px;
+			height: auto;
+			word-break: break-all;
+
+			.card-label {
+				border-bottom: 1px solid darken(#f5f5f5, 14%);
+				margin-bottom: 5px;
+				font-weight: 400;
+			}
+		}
+	}
+
+	.card-actions {
+		position: absolute;
+		right: 5px;
+		bottom: 5px;
+		cursor: pointer;
+		display: flex;
+		font-size: 12px;
+
+		.action-item {
+			text-align: center;
+			margin: 0 2px;
+
+			@each $name, $color in $foundation-palette {
+				&.#{$name} {
+					color: $color;
+
+					.action:hover,
+					.action:active,
+					.action:focus {
+						background: $color;
+						color: #f5f5f5;
+					}
+
+					.action.disabled,
+					.action:disabled {
+						background: transparentize($color, 0.01);
+						cursor: disabled;
+					}
+				}
+			}
+
+			.action {
+				color: $primary-500;
+				width: 40px;
+				height: 40px;
+				border-radius: 20px;
+				border: 1px solid $primary-500;
+				align-items: center;
+				padding: 0;
+				flex-direction: column;
+				justify-content: center;
+				text-align: center;
+				display: flex;
+				transition: background 0.5s, color 0.5s;
+				left: 50%;
+
+				&:hover {
+					color: $white;
+					background: $primary-500;
+				}
+			}
+
+			.mobile-text {
+				display: none;
+			}
+		}
+
+		i {
+			font-size: 20px;
+			display: flex;
+			height: 40px;
+			width: 40px;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+}
+
+// Media Query Breakpoints
+@include breakpoint(medium down) {
+	.card {
+		.card-content {
+			padding-bottom: 0;
+		}
+
+		.card-actions {
+			display: flex;
+			text-align: center;
+			justify-content: center;
+		}
+	}
+}
+
+@include breakpoint(small only) {
+	.card {
+		.card-actions {
+			font-size: 10px;
+			width: 100%;
+			position: relative;
+			right: auto;
+
+			.action-item {
+				display: flex;
+				width: 60px;
+				flex-direction: column;
+			    align-items: center;
+			    justify-content: center;
+
+				.mobile-text {
+					display: block;
+				}
+			}
+		}
+	}
+}

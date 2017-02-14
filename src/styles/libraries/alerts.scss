@@ -1,0 +1,54 @@
+.alert-container {
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+	max-width: 240px;
+	z-index: 100;
+
+	.alert-box {
+		position: relative;
+		min-width: 140px;
+		color: $white;
+		box-shadow: $shadow-2;
+		margin-bottom: 15px;
+		background-color: $primary-500;
+		display: none;
+
+		&.show {
+			display: block;
+		}
+
+		@each $name, $color in $foundation-palette {
+			&.#{$name} {
+				background-color: lighten($color, 6%) !important;
+
+				.header {
+					background-color: lighten($color, 3%) !important;
+				}
+			}
+		}
+
+		.header {
+			display: flex;
+			padding: 5px 7px;
+
+			.title {
+				flex-grow: 1;
+				font-weight: bold;
+			}
+
+			.close {
+				font-size: 1.1rem;
+	    		margin-top: -4px;
+
+				&:hover {
+					cursor: pointer;
+				}
+			}
+		}
+
+		.content {
+			padding: 10px;
+		}
+	}
+}
