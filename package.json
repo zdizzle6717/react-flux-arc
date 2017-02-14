@@ -11,7 +11,7 @@
     "start-client": "forever start -c 'node_modules/.bin/babel-node' server-client/index.js",
     "stop-client": "forever stop 'server-client/index.js'",
     "watch-server": "babel-watch server/index.js",
-    "start-server": "forever start server/index.js",
+    "start-server": "forever start -c 'node_modules/.bin/babel-node' server/index.js",
     "stop-server": "forever stop server/index.js",
     "watch-massive": "babel-watch server-massive/index.js",
     "start-massive": "forever start -c 'node_modules/.bin/babel-node' server-massive/index.js",
