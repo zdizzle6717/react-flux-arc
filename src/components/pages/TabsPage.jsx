@@ -154,7 +154,7 @@ export default class TabsPage extends React.Component {
 					}
 				}
 			data.append('file', file);
-			promises.push(axios.post('http://localhost:8080/api/files/contacts/' + file.size, data, config));
+			promises.push(axios.post('/files/contacts/' + file.size, data, config));
 		});
 
 		return axios.all(promises);

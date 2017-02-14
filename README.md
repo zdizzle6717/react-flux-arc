@@ -19,7 +19,7 @@ module.exports = {
 	'clientPort': 3000,
 	'port': 3030,
   	'postgresConnectionString': "postgres://username:password@localhost/database",
-	'uploadPath': '/var/www/html/react/dist/uploads/',
+	'uploadPath': '/dist/uploads/',
 	'secret': 'SECRETS_SECRETS_ARE_NO_FUN'
 }
 </pre>

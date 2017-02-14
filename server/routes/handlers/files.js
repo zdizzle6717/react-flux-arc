@@ -11,28 +11,34 @@ let files = {
     let data = request.payload;
     if (data.file) {
       let name = Date.now() + '-' + data.file.hapi.filename;
-      let path = __dirname + '/../../../uploads/' + request.params.path + '/' + name;
-      let file = fs.createWriteStream(path);
+      let path = __dirname + '/../../..' + env.uploadPath + request.params.path + '/' + name;
+			fs.ensureFile(path, function (err) {
+				if (err) {
+					console.log(err);
+					reply().code(404);
+				} else {
+					let file = fs.createWriteStream(path);
+					file.on('error', (err) => {
+		        console.error(err);
+		      });
 
-      file.on('error', (err) => {
-        console.error(err);
-      });
+					data.file.pipe(file);
 
-      data.file.pipe(file);
-
-      data.file.on('end', (err) => {
-        let response = {
-          'file': {
-            'name': name,
-            'size': request.params.size,
-            'type': data.file.hapi.headers['content-type']
-          },
-          'headers': data.file.hapi.headers,
-          'status': 200,
-          'statusText': 'File uploaded successfully!'
-        };
-        reply(JSON.stringify(response));
-      });
+		      data.file.on('end', (err) => {
+		        let response = {
+		          'file': {
+		            'name': name,
+		            'size': request.params.size,
+		            'type': data.file.hapi.headers['content-type']
+		          },
+		          'headers': data.file.hapi.headers,
+		          'status': 200,
+		          'statusText': 'File uploaded successfully!'
+		        };
+		        reply(JSON.stringify(response));
+	      	});
+				}
+			});
     } else {
       let response = {
         'filename': data.file.hapi.filename,
