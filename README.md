@@ -4,11 +4,13 @@ This is a universal javascript (server-side rendering) app architecture built wi
 ## Installation
 * `sudo npm install`
 
-> install mysql, create a database and add username, password, database, host to /server/config/config.json
-> alternatively, install postgres and use the server configuration in /server-massive for a Hapi.js and massive.js API
+> Install mysql, create a database and add username, password, database, host to /server/config/config.json
+
+> Alternatively, install postgres and use the server configuration in /server-massive for a Hapi.js and massive.js API
+
 > NOTE: Any server API can be plugged in rather than using the supplied APIs
 
-> create an envVariables.js file in the root directory (example below)
+> Create an envVariables.js file in the root directory (example below)
 
 <pre>
 'use strict';
@@ -16,7 +18,7 @@ This is a universal javascript (server-side rendering) app architecture built wi
 module.exports = {
 	'clientPort': 3000,
 	'port': 3030,
-  'postgresConnectionString': "postgres://username:password@localhost/database",
+  	'postgresConnectionString': "postgres://username:password@localhost/database",
 	'uploadPath': '/var/www/html/react/dist/uploads/',
 	'secret': 'SECRETS_SECRETS_ARE_NO_FUN'
 }
@@ -30,4 +32,4 @@ module.exports = {
 
 * `sudo npm run start-client`
 
-> navigate to localhost:3000
+> Navigate to localhost:3000 in the browser
